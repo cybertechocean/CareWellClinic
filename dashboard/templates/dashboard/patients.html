@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Patients — {{ clinic.clinic_name }}{% endblock %}
+
+{% block content %}
+<div class="subpage-container">
+  <div class="chart-card-header">
+    <h2 class="card-title">Patient Directory (580 Total)</h2>
+    <a href="{% url 'dashboard' %}" class="card-footer-link" style="margin:0;">← Back to Dashboard</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Registered</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for patient in patients %}
+        <tr>
+          <td><strong>{{ patient.name }}</strong></td>
+          <td>{{ patient.gender }}</td>
+          <td>{{ patient.age|default:"--" }}</td>
+          <td>{{ patient.phone }}</td>
+          <td>{{ patient.email|default:"--" }}</td>
+          <td>{{ patient.created_at|date:"M d, Y" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6" style="text-align:center; padding: 24px;">No patients found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

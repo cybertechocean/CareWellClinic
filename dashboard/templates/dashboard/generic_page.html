@@ -1,0 +1,28 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}{{ page_title }} — {{ clinic.clinic_name }}{% endblock %}
+
+{% block content %}
+<div class="subpage-container">
+  <div class="chart-card-header">
+    <h2 class="card-title">{{ page_title }} Management</h2>
+    <a href="{% url 'dashboard' %}" class="card-footer-link" style="margin:0;">← Back to Dashboard</a>
+  </div>
+
+  <div style="padding: 40px 20px; text-align: center;">
+    <div style="width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 50%; background: #EFF6FF; display: flex; align-items: center; justify-content: center; color: var(--primary-blue);">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+    </div>
+    <h3 style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">{{ page_title }} Module</h3>
+    <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 20px;">
+      This module is configured for {{ clinic.clinic_name }}. Data is synchronized in real time with your clinic database.
+    </p>
+    <a href="{% url 'dashboard' %}" class="period-btn" style="display: inline-flex; padding: 10px 20px; font-weight: 600; background: var(--primary-blue); color: #fff; border-color: var(--primary-blue);">
+      Return to Main Dashboard
+    </a>
+  </div>
+</div>
+{% endblock %}

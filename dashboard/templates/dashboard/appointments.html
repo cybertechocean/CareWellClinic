@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Appointments — {{ clinic.clinic_name }}{% endblock %}
+
+{% block content %}
+<div class="subpage-container">
+  <div class="chart-card-header">
+    <h2 class="card-title">All Clinic Appointments</h2>
+    <a href="{% url 'dashboard' %}" class="card-footer-link" style="margin:0;">← Back to Dashboard</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Doctor</th>
+          <th>Service</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appt in appointments %}
+        <tr>
+          <td><strong>{{ appt.patient.name }}</strong></td>
+          <td>{{ appt.doctor.name|default:"General Duty" }}</td>
+          <td>{{ appt.service.name }}</td>
+          <td>{{ appt.date|date:"M d, Y" }}</td>
+          <td>{{ appt.time_str }}</td>
+          <td><span class="status-badge badge-{{ appt.status|lower }}">{{ appt.status }}</span></td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6" style="text-align:center; padding: 24px;">No appointments found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
