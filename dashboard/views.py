@@ -102,7 +102,7 @@ def dashboard_index(request):
         rev_labels = [r.month_name for r in revenue_records]
         rev_values = [float(r.amount) for r in revenue_records]
     else:
-        rev_labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+        rev_labels = ['Apr', 'May', 'Jun', 'Jul', 'Aug']
         rev_values = [85000, 100000, 102000, 120000, 125600]
 
     context = {
@@ -136,7 +136,7 @@ def dashboard_index(request):
         'chart_yesterday_json': json.dumps(chart_yesterday_data),
         'rev_labels_json': json.dumps(rev_labels),
         'rev_values_json': json.dumps(rev_values),
-        'current_date_display': 'May 13, 2025',
+        'current_date_display': 'August 14, 2026',
     }
 
     return render(request, 'dashboard/index.html', context)

@@ -50,7 +50,7 @@ class Command(BaseCommand):
                 email=email,
                 phone=phone,
                 is_active=True,
-                joined_date=datetime.date(2025, 5, 1)
+                joined_date=datetime.date(2026, 8, 1)
             )
             doctors.append(doc)
 
@@ -93,7 +93,7 @@ class Command(BaseCommand):
         Patient.objects.bulk_create(extra_patients)
 
         self.stdout.write(self.style.NOTICE('Creating appointments for today (42 total)...'))
-        today = datetime.date(2025, 5, 13)
+        today = datetime.date(2026, 8, 14)
 
         # 4 Recent Appointments exact matching
         Appointment.objects.create(
@@ -174,11 +174,11 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.NOTICE('Creating monthly revenue data...'))
         revenue_data = [
-            ("Jan", 1, 2025, Decimal("85000.00"), False),
-            ("Feb", 2, 2025, Decimal("100000.00"), False),
-            ("Mar", 3, 2025, Decimal("102000.00"), False),
-            ("Apr", 4, 2025, Decimal("120000.00"), False),
-            ("May", 5, 2025, Decimal("125600.00"), True),
+            ("Apr", 4, 2026, Decimal("85000.00"), False),
+            ("May", 5, 2026, Decimal("100000.00"), False),
+            ("Jun", 6, 2026, Decimal("102000.00"), False),
+            ("Jul", 7, 2026, Decimal("120000.00"), False),
+            ("Aug", 8, 2026, Decimal("125600.00"), True),
         ]
         for m_name, m_num, yr, amt, is_cur in revenue_data:
             MonthlyRevenue.objects.create(
